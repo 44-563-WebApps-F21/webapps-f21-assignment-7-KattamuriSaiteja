@@ -64,7 +64,11 @@
                         <p id="distance">
                                 Distance is unknown
                         </p>
+
                 </div>
+                <div onclick="newchance()" class="btn btn-warning">New Chance</div><br><br>
+
+
                 <div class="row">
                         <div class="col-sm-2"><img src="Images/Bush.jpg" alt="tree" id="1" onclick="check(0)"
                                         height="200" width="200"></div>
@@ -174,6 +178,21 @@
                         return row + column - 1;
 
                 }
+                function newchance() {
+                        triesCount = 0;
+                        max = 23
+                        min = 0
+                        animalLocation = Math.floor(Math.random() * (max - min)) + min
+                        document.getElementById("tries").innerHTML = "Number of tries is zero";
+                        AnimalDistance = "unknown"
+                        document.getElementById("distance").innerHTML = "Distance is " + AnimalDistance;
+                        for (var i = 0; i < 24; i++) {
+
+                                document.getElementById(ids[i]).src = "Images/Bush.jpg"
+
+                        }
+                }
+
         </script>
 </body>
 
