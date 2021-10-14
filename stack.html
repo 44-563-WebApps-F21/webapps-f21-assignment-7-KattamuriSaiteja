@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<title>Stack builder</title>
+	<style>
+		.flex-container {
+			display: flex;
+			flex-direction: row;
+			background-color: green;
+		}
+
+		.flex-container>div {
+			/*div children of the flex container*/
+			background-color: yellow;
+			margin: 10px;
+			padding: 20px;
+			font-size: 30px;
+		}
+
+		/* Responsive layout */
+		@media (max-width: 600px) {
+			.flex-container {
+				flex-direction: column;
+				background-color: green;
+			}
+		}
+	</style>
+</head>
+
+
+
+<body>
+	<h2>Saiteja Kattamuri builds a stack</h2>
+	<input id="name" type="text"></input><br><br>
+	<div class="flex-container" id="target">
+		<div class="stack">row item 1</div>
+		<div class="stack">row item 2</div>
+		<div class="stack">row item 3</div>
+	</div>
+
+	<p>create an new element of type div and add it to container.</p>
+	<button class="btn btn-primary" onclick="makeNewDiv()">Push value</button>
+
+	<button class="btn btn-danger" onclick="popItem()">Pop value</button>
+	<button class="btn btn-warning" onclick="zap()">Zap value</button>
+
+
+</body>
+<script>
+	function makeNewDiv() {
+		let value = document.getElementById("name").value
+		let element = document.createElement("div")
+		element.innerHTML = value
+		element.className = "stack"
+
+		document.getElementById('target').appendChild(element)
+
+	}
+
+	function popItem() {
+		var stackItems = document.getElementsByClassName("stack");
+		var stackItemsLength = stackItems.length;
+
+		if (stackItemsLength > 0) {
+			stackItems[stackItemsLength - 1].remove();
+		}
+	}
+
+	function zap() {
+		var input = document.getElementById("name");
+		var holder = input.value;
+		var stackItems = document.getElementsByClassName("stack");
+
+		for (var item = 0; item < stackItems.length; item++) {
+			if (stackItems[item].innerHTML == holder) {
+				stackItems[item].remove();
+			}
+		}
+	}
+</script>
+
+</html>
